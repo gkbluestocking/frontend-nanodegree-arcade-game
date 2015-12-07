@@ -49,7 +49,7 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 var Player = function(x,y){
   this.startX = 200;
-  this.startY = 275;
+  this.startY = 300;
   this.reset();
   this.sprite = 'images/char-pink-girl.png';
 };
@@ -61,7 +61,7 @@ if (this.x < 0){
     this.x = 400;
 } else if (this.y < 10) {
     this.y = -10;
-    reset();
+    player.reset();
 } else if (this.y > 420) {
     this.y = 420;
 }
@@ -90,13 +90,16 @@ Player.prototype.handleInput = function(direction) {
     }
 };
 
-Player.prototype.checkCollisions = function() {
+Enemy.prototype.checkCollisions = function() {
     if (this.y === bug1.y && (this.x > bug1.x - 60 && this.x < bug1.x + 60)){
         this.x = 200;
-        this.y = 380;
+        this.y = 300;
     } else if (this.y === bug2.y &&(this.x > bug2.x - 60 && this.x < bug2.x +60)){
         this.x = 200;
-        this.y = 380;
+        this.y = 300;
+    }
+    {
+        this.checkCollisions;
     }
 };
 
