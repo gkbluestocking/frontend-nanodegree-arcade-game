@@ -1,3 +1,7 @@
+var TILE_WIDTH = 101,
+    TILE_HEIGHT = 83;
+
+
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
 
@@ -16,13 +20,14 @@ var Enemy = function(x,y,speed) {
 
   };
 
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 
 Enemy.prototype.update = function(dt) {
-    if (this.x > 500) {
+    if (this.x > TILE_WIDTH + 150) {
         this.speed = Math.floor((Math.random() * 7) + 1);
-        this.x -= 650;
+        this.x -= 125;
 
         if (Math.random() >= 0.66) {
             this.y = 60;
@@ -40,16 +45,26 @@ Enemy.prototype.update = function(dt) {
     // all computers.
 
 // Draw the enemy on the screen, required method for game
+
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+
+Enemy.prototype.checkCollisions = function() {
+    if (this.y === player.y && (this.x > player.x - 60 && this.x < player.x + 60)){
+        this.x = 200;
+        this.y = 300;
+    }
+};
+
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(x,y){
-  this.startX = 200;
-  this.startY = 300;
+  this.Start_X = 200;
+  this.Start_Y = 300;
   this.reset();
   this.sprite = 'images/char-pink-girl.png';
 };
@@ -90,22 +105,10 @@ Player.prototype.handleInput = function(direction) {
     }
 };
 
-Enemy.prototype.checkCollisions = function() {
-    if (this.y === bug1.y && (this.x > bug1.x - 60 && this.x < bug1.x + 60)){
-        this.x = 200;
-        this.y = 300;
-    } else if (this.y === bug2.y &&(this.x > bug2.x - 60 && this.x < bug2.x +60)){
-        this.x = 200;
-        this.y = 300;
-    }
-    {
-        this.checkCollisions;
-    }
-};
 
 Player.prototype.reset = function () {
-    this.x = this.startX;
-    this.y = this.startY;
+    this.x = this.Start_X;
+    this.y = this.Start_Y;
 };
 
 
