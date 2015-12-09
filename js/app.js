@@ -26,8 +26,8 @@ var Enemy = function(x, y, speed) {
 // Parameter: dt, a time delta between ticks
 
 Enemy.prototype.update = function(dt) {
-    if (this.x > TILE_WIDTH + 150) {
-        this.speed = Math.floor((Math.random() * 7) + 1);
+    if (this.x > TILE_WIDTH + 3000) {
+        this.speed = Math.floor((Math.random() * 5) + 1);
         this.x = -125;
 
         if (Math.random() >= 0.66) {
