@@ -1,29 +1,17 @@
-frontend-nanodegree-arcade-game
-===============================
+#Synopsis#
 
-Students should use this [rubric](https://www.udacity.com/course/viewer/#!/c-nd001/l-2696458597/m-2687128535) for self-checking their submission.
+This is Eleni Palmos's submission to Udacity's FEND Project Three Requirement.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+#Code Example#
 
+#Motivation#
 
-#My Fabulous Recipe#
+This project has been a huge challenge for me.
 
-This recipe for <strong>cereal and milk</strong> has been passed down my family for months.
+#License#
 
-#Ingredients#
+Don't make me laugh! But, if you feel so inclined to borrow my code, I grant an MIT license.
 
----
-    *Cereal (you can find cool cereals <a href="www.example.com/coolcereals">here</a>)
-    *Milk
-    
-___
+#Note#
 
-
-#Directions#
-
-If I were writing these out as <em>code</em>, it might look something like this:
-
-```if bowl is empty:
-    add cereal
-if bowl only has cereal in it:
-    add milk```
+My first reviewer suggested that create a character superclass but I opted to focus on game functionality first.
