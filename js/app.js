@@ -1,7 +1,10 @@
 //Tile size
-var TILE_WIDTH = 101,
-    TILE_HEIGHT = 83;
+var tile_width = 101;
+var tile_height = 83;
 
+//Canvas
+var canvas_width = 505;
+var canvas_height = 606;
 
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
@@ -9,7 +12,7 @@ var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
-    this.sprite = 'images/enemy-bug.png';
+
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -19,16 +22,17 @@ var Enemy = function(x, y, speed) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
 
-};
+    this.sprite = 'images/enemy-bug.png';
 
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 
 Enemy.prototype.update = function(dt) {
-    if (this.x > TILE_WIDTH + 3000) {
-        this.speed = Math.floor((Math.random() * 5) + 1);
-        this.x = -125;
+    if (this.x > 500) {
+        this.speed = Math.floor((Math.random() * 7) + 1);
+        this.x -= 650;
 
         if (Math.random() >= 0.66) {
             this.y = 60;
@@ -41,33 +45,24 @@ Enemy.prototype.update = function(dt) {
         this.x += this.speed + dt;
     }
 };
-
 // You should multiply any movement by the dt parameter
 // which will ensure the game runs at the same speed for
 // all computers.
 
 // Draw the enemy on the screen, required method for game
-
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
-
-Enemy.prototype.checkCollisions = function() {
-    if (this.y === player.y && (this.x > player.x - 60 && this.x < player.x + 60)) {
-        this.x = 200;
-        this.y = 300;
-    }
-};
-
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(x, y) {
-    this.Start_X = 200;
-    this.Start_Y = 300;
-    this.reset();
+    this.x = 200;
+    this.y = 300;
+    this.startX = 200;
+    this.startY = 300;
+    //this.reset();
     this.sprite = 'images/char-pink-girl.png';
 };
 
@@ -78,11 +73,15 @@ Player.prototype.update = function() {
         this.x = 400;
     } else if (this.y < 10) {
         this.y = -10;
-        player.reset();
+        this.reset();
     } else if (this.y > 420) {
         this.y = 420;
     }
+    for (var i = 0; i < allEnemies.length; i++) {
+        allEnemies[i].checkCollisions();
+    }
 };
+
 
 Player.prototype.render = function(x, y) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -97,28 +96,41 @@ Player.prototype.handleInput = function(direction) {
         this.x = 200;
         this.y = 380;
     } else if (direction === 'left') {
-        this.x = 100;
+        this.x -= 100;
     } else if (direction === 'right') {
-        this.x = 100;
+        this.x += 100;
     } else if (direction === 'up') {
-        this.y = 80;
+        this.y -= 80;
     } else {
-        this.y = 80;
+        this.y += 80;
+    }
+};
+
+Enemy.prototype.checkCollisions = function() {
+    if (player.x < this.x + 50 &&
+        player.x + 50 > this.x &&
+        player.y < this.y + 50 &&
+        player.y + 50 > this.y) {
+        console.log("hit");
+        alert("You hit my ladybug!");
+        player.reset();
     }
 };
 
 
+
 Player.prototype.reset = function() {
-    this.x = this.Start_X;
-    this.y = this.Start_Y;
+    this.x = this.startX;
+    this.y = this.startY;
+
 };
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var bug1 = new Enemy(-75, 230, 20);
-var bug2 = new Enemy(-200, 150, 20);
-var bug3 = new Enemy(-10, 60, 30);
+var bug1 = new Enemy(75, 230, 20);
+var bug2 = new Enemy(200, 150, 20);
+var bug3 = new Enemy(10, 60, 30);
 var allEnemies = [bug1, bug2, bug3];
 
 
