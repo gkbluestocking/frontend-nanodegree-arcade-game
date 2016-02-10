@@ -1,10 +1,10 @@
 //Tile size
-var tile_width = 101;
-var tile_height = 83;
+var TILE_WIDTH = 101;
+var TILE_HEIGHT = 83;
 
 //Canvas
-var canvas_width = 505;
-var canvas_height = 606;
+var CANVAS_WIDTH = 505;
+var CANVAS_HEIGHT = 606;
 
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
@@ -62,7 +62,6 @@ var Player = function(x, y) {
     this.y = 300;
     this.startX = 200;
     this.startY = 300;
-    //this.reset();
     this.sprite = 'images/char-pink-girl.png';
 };
 
@@ -74,8 +73,8 @@ Player.prototype.update = function() {
     } else if (this.y < 10) {
         this.y = -10;
         this.reset();
-    } else if (this.y > 420) {
-        this.y = 420;
+    } else if (this.y > 410) {
+        this.y = 410;
     }
     for (var i = 0; i < allEnemies.length; i++) {
         allEnemies[i].checkCollisions();
