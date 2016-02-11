@@ -95,13 +95,13 @@ Player.prototype.handleInput = function(direction) {
         this.x = 200;
         this.y = 380;
     } else if (direction === 'left') {
-        this.x -= 100;
+        this.x -= TILE_WIDTH;
     } else if (direction === 'right') {
-        this.x += 100;
+        this.x += TILE_WIDTH;
     } else if (direction === 'up') {
-        this.y -= 80;
+        this.y -= TILE_HEIGHT;
     } else {
-        this.y += 80;
+        this.y += TILE_HEIGHT;
     }
 };
 
