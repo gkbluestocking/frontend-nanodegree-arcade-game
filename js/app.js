@@ -1,3 +1,8 @@
+//My version of Frogger and a requirement for Udacity's FEND course.
+//Eleni Palmos, February 11, 2016, NYC
+
+"use strict";
+
 //Tile size
 var TILE_WIDTH = 101;
 var TILE_HEIGHT = 83;
